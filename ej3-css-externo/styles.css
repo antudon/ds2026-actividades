@@ -1,0 +1,41 @@
+    /* ---- SELECTORES DE ETIQUETA ---- */
+    /* esto aplica a toda la pagina */
+    body {
+        font-family: Arial, sans-serif; /* tipografia de toda la pagina */
+        background-color: #f5f5f5; /* color de fondo gris clarito */
+        margin: 20px; /* espacio externo alrrededor de todo */
+        padding: 0; /* sin espacio interno */
+        color: #333; /* color del texto, gris oscuro */
+    }
+
+    /* esto aplica a todos los h1 */
+    h1 {
+        color: #2c3e50; /* color azul oscuro, el que mas resalta */
+    }
+
+    /* esto aplica a todos los h2 */
+    h2 {
+        color: #3498db; /* color azul, un poco mas claro que el h1 */
+    }
+
+    /* esto aplica a todos los parrafos */
+    p {
+        margin: 10px 0; /* espacio externo arriba y abajo, si pongo un solo numero aplica a todos los lados */
+        padding: 5px; /* espacio interno, es como el margen pero adentro */
+    }
+
+    /* ---- SELECTOR DE CLASE ---- */
+    /* esto aplica solo a los elementos que tengan class="navegacion" 
+    ojo que si no le pongo el punto adelante no funciona!! */
+    .navegacion {
+        background-color: #2c3e50; /* fondo azul oscuro, igual que el h1 */
+        padding: 10px; /* espacio interno para que no quede tan pegado */
+        margin-bottom: 20px; /* espacio abajo para separarlo del contenido */
+    }
+
+    /* esto aplica a los links que esten dentro de un elemento con class="navegacion"
+    si no pongo el .navegacion adelante cambiaria TODOS los links de la pagina */
+    .navegacion a {
+        color: white; /* links en blanco para que se vean sobre el fondo oscuro */
+        margin-right: 15px; /* espacio entre los links para que no queden pegados */
+    }
