@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ABM Libros</title>
+</head>
+<body>
+  <h1>ABM de Libros</h1>
+
+  <h2>Agregar libro</h2>
+  <input type="text" id="titulo" placeholder="Titulo">
+  <input type="text" id="autor" placeholder="Autor">
+  <input type="number" id="precio" placeholder="Precio">
+  <button id="agregar">Agregar</button>
+  <div id="errorForm"></div>
+
+  <h2>Listado</h2>
+  <ul id="listado"></ul>
+  <p id="stats"></p>
+
+  <script>
+    let catalogo = [
+      { isbn: "001", titulo: "El Aleph", autor: "Borges", precio: 1500, disponible: true },
+      { isbn: "002", titulo: "Rayuela", autor: "Cortazar", precio: 1800, disponible: true },
+      { isbn: "003", titulo: "Ficciones", autor: "Borges", precio: 1200, disponible: false }
+    ];
+
+    function renderizar() {
+      const listado = document.querySelector('#listado');
+      const stats = document.querySelector('#stats');
+      listado.innerHTML = "";
+      catalogo.forEach(libro => {
+        const li = document.createElement('li');
+        li.textContent = libro.titulo + " - " + libro.autor + " - $" + libro.precio;
+        const btn = document.createElement('button');
+        btn.textContent = "Eliminar";
+        btn.addEventListener('click', () => eliminarLibro(libro.isbn));
+        li.appendChild(btn);
+        listado.appendChild(li);
+      });
+      const total = catalogo.length;
+      const promedio = total > 0 ? catalogo.reduce((acc, l) => acc + l.precio, 0) / total : 0;
+      stats.textContent = "Total: " + total + " | Promedio: $" + promedio.toFixed(2);
+    }
+
+    function agregarLibro(libro) {
+      catalogo.push(libro);
+      renderizar();
+    }
+
+    function eliminarLibro(isbn) {
+      catalogo = catalogo.filter(l => l.isbn !== isbn);
+      renderizar();
+    }
+
+    function validarFormulario() {
+      const titulo = document.querySelector('#titulo').value.trim();
+      const autor = document.querySelector('#autor').value.trim();
+      const precio = parseFloat(document.querySelector('#precio').value);
+      const errorForm = document.querySelector('#errorForm');
+
+      if (!titulo || !autor || isNaN(precio) || precio <= 0) {
+        errorForm.textContent = "Todos los campos son obligatorios y el precio debe ser mayor a 0";
+        return null;
+      }
+
+      errorForm.textContent = "";
+      return {
+        isbn: "AUTO-" + Date.now(),
+        titulo,
+        autor,
+        precio,
+        disponible: true
+      };
+    }
+
+    document.querySelector('#agregar').addEventListener('click', () => {
+      const libro = validarFormulario();
+      if (libro === null) return;
+      agregarLibro(libro);
+      document.querySelector('#titulo').value = "";
+      document.querySelector('#autor').value = "";
+      document.querySelector('#precio').value = "";
+    });
+
+    renderizar();
+  </script>
+</body>
+</html>
+<!-- el app no se abre bien por eso lo pego directamete en el index -->
