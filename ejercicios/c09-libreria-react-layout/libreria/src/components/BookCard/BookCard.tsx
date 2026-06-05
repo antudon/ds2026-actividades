@@ -1,5 +1,6 @@
 ﻿import { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import type { Book } from '../../types/libro';
 
 interface BookCardProps {
@@ -53,24 +54,26 @@ const BookCard = ({ book }: BookCardProps) => {
               {liked ? '❤️' : '🤍'} {likes}
             </button>
           </div>
-          <Button
-            style={{
-              width: '100%',
-              background: '#1a1614',
-              border: 'none',
-              borderRadius: 0,
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              textTransform: 'uppercase',
-              padding: '0.6rem',
-              transition: 'background 0.2s',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#8b4513')}
-            onMouseLeave={e => (e.currentTarget.style.background = '#1a1614')}
-          >
-            Agregar al carrito
-          </Button>
+          <Link to={'/libros/' + book.id} style={{ textDecoration: 'none' }}>
+            <Button
+              style={{
+                width: '100%',
+                background: '#1a1614',
+                border: 'none',
+                borderRadius: 0,
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                padding: '0.6rem',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = '#8b4513')}
+              onMouseLeave={e => (e.currentTarget.style.background = '#1a1614')}
+            >
+              Ver mas
+            </Button>
+          </Link>
         </div>
       </Card.Body>
     </Card>
