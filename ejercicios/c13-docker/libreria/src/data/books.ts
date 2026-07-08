@@ -1,0 +1,90 @@
+﻿import type { Book } from '../types/libro';
+
+export type { Book };
+
+export const books: Book[] = [
+  {
+    id: 1,
+    title: 'Cien años de soledad',
+    author: 'Gabriel García Márquez',
+    genre: 'Literatura',
+    price: 2990,
+    cover: 'https://covers.openlibrary.org/b/id/8231856-L.jpg',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'El nombre de la rosa',
+    author: 'Umberto Eco',
+    genre: 'Misterio',
+    price: 3490,
+    cover: 'https://covers.openlibrary.org/b/id/8739161-L.jpg',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'Ficciones',
+    author: 'Jorge Luis Borges',
+    genre: 'Cuentos',
+    price: 2290,
+    cover: 'https://covers.openlibrary.org/b/id/8226144-L.jpg',
+    rating: 5,
+  },
+  {
+    id: 4,
+    title: 'El Alquimista',
+    author: 'Paulo Coelho',
+    genre: 'Ficción',
+    price: 1990,
+    cover: 'https://covers.openlibrary.org/b/id/8739135-L.jpg',
+    rating: 4,
+  },
+  {
+    id: 5,
+    title: 'Rayuela',
+    author: 'Julio Cortázar',
+    genre: 'Literatura',
+    price: 2790,
+    cover: 'https://covers.openlibrary.org/b/id/8739188-L.jpg',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 6,
+    title: 'La sombra del viento',
+    author: 'Carlos Ruiz Zafón',
+    genre: 'Misterio',
+    price: 3190,
+    cover: 'https://covers.openlibrary.org/b/id/8226134-L.jpg',
+    rating: 4,
+  },
+  {
+    id: 7,
+    title: 'Don Quijote de la Mancha',
+    author: 'Miguel de Cervantes',
+    genre: 'Clásicos',
+    price: 1590,
+    cover: 'https://covers.openlibrary.org/b/id/8739208-L.jpg',
+    rating: 5,
+  },
+  {
+    id: 8,
+    title: 'El túnel',
+    author: 'Ernesto Sabato',
+    genre: 'Literatura',
+    price: 1890,
+    cover: 'https://covers.openlibrary.org/b/id/8739200-L.jpg',
+    rating: 4,
+  },
+];
+
+export const categories = [
+  { icon: '📚', name: 'Literatura' },
+  { icon: '🔍', name: 'Misterio' },
+  { icon: '🚀', name: 'Ciencia Ficción' },
+  { icon: '💘', name: 'Romance' },
+  { icon: '🧠', name: 'No Ficción' },
+  { icon: '🏛️', name: 'Clásicos' },
+];
