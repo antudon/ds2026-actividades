@@ -1,0 +1,91 @@
+﻿@baseUrl = http://localhost:3000
+
+### Listar libros
+GET {{baseUrl}}/api/libros
+
+### Solo los disponibles
+GET {{baseUrl}}/api/libros?disponible=true
+
+### Un libro con autor y categorias
+GET {{baseUrl}}/api/libros/1
+
+### 404 - libro que no existe
+GET {{baseUrl}}/api/libros/9999
+
+### 400 - id invalido
+GET {{baseUrl}}/api/libros/abc
+
+### Crear un libro
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{ "titulo": "El tunel", "precio": 1890, "imagen": "https://covers.openlibrary.org/b/id/8739200-L.jpg", "disponible": true, "autorId": 1 }
+
+### 400 - sin titulo
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{ "precio": 5000, "imagen": "https://example.com/img.jpg", "autorId": 1 }
+
+### 409 - autorId inexistente
+POST {{baseUrl}}/api/libros
+Content-Type: application/json
+
+{ "titulo": "Huerfano", "precio": 5000, "imagen": "https://example.com/img.jpg", "autorId": 9999 }
+
+### Editar un libro
+PUT {{baseUrl}}/api/libros/1
+Content-Type: application/json
+
+{ "titulo": "Cien anos de soledad", "precio": 3500, "imagen": "https://covers.openlibrary.org/b/id/8231856-L.jpg", "autorId": 1 }
+
+### 404 - editar libro que no existe
+PUT {{baseUrl}}/api/libros/9999
+Content-Type: application/json
+
+{ "titulo": "No existe", "precio": 1000, "imagen": "https://example.com/img.jpg", "autorId": 1 }
+
+### Borrar un libro
+DELETE {{baseUrl}}/api/libros/5
+
+### 404 - borrar libro que no existe
+DELETE {{baseUrl}}/api/libros/9999
+
+### Listar autores
+GET {{baseUrl}}/api/autores
+
+### Un autor
+GET {{baseUrl}}/api/autores/1
+
+### 404 - autor que no existe
+GET {{baseUrl}}/api/autores/9999
+
+### 400 - id invalido
+GET {{baseUrl}}/api/autores/abc
+
+### Crear un autor
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{ "nombre": "Ernesto Sabato", "nacionalidad": "Argentina" }
+
+### 409 - autor duplicado
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{ "nombre": "Jorge Luis Borges", "nacionalidad": "Argentina" }
+
+### 400 - sin nombre
+POST {{baseUrl}}/api/autores
+Content-Type: application/json
+
+{ "nacionalidad": "Argentina" }
+
+### Borrar un autor
+DELETE {{baseUrl}}/api/autores/5
+
+### 409 - borrar autor con libros
+DELETE {{baseUrl}}/api/autores/1
+
+### 404 - borrar autor que no existe
+DELETE {{baseUrl}}/api/autores/9999
